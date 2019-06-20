@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.njupt.mybatisintercept.dao.UserDAO">
+    <resultMap id="userResultMap" type="com.njupt.mybatisintercept.entity.UserEntity">
+        <id column="student_id" property="studentId"/>
+        <result column="student_name" property="studentName"/>
+        <result column="student_classid" property="studentClassid"/>
+    </resultMap>
+    <select id="selectUser" resultMap="userResultMap" parameterType="UserEntity">
+        SELECT student_id,student_name,student_classid FROM student
+        <where>
+            <if test="studentId!=null and studentId!='' ">
+                AND student_id = #{studentId}
+            </if>
+            <if test="studentName!=null and studentName!='' ">
+                AND student_name = #{studentName}
+            </if>
+            <if test="studentClassid!=null and studentClassid!='' ">
+                AND student_classid = #{studentClassid}
+            </if>
+        </where>
+    </select>
+
+</mapper>
