@@ -4,6 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <plugins>
+        <plugin interceptor="com.njupt.mybatisintercept.interceptor.MybatisInterceptor2" />
         <plugin interceptor="com.njupt.mybatisintercept.interceptor.MybatisInterceptor" />
     </plugins>
 </configuration>
