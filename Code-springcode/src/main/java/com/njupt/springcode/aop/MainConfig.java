@@ -14,12 +14,15 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 @EnableAspectJAutoProxy
 public class MainConfig {
     @Bean
+    public CalculateImp calculateImp(){
+        return new CalculateImp();
+    }
+    @Bean
     public Aop aop(){
         return new Aop();
     }
-
     @Bean
-    public CalculateImp calculateImp(){
-        return new CalculateImp();
+    public MyBeanPostProcessor myBeanPostProcessor(){
+        return new MyBeanPostProcessor();
     }
 }
