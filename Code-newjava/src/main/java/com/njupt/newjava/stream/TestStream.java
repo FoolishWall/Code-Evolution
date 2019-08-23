@@ -1,6 +1,9 @@
 package com.njupt.newjava.stream;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
@@ -16,6 +19,14 @@ import java.util.stream.Stream;
 public class TestStream {
     public static void main(String[] args) {
         ArrayList<String> list = new ArrayList<>();
+        list.add("ec");
+        list.add("bc");
+        list.add("bc");
+        list.add("ac");
+        list.add("ac");
+        list.add("ac");
+
+        ArrayList<String> list2 = new ArrayList<>();
         list.add("ec");
         list.add("bc");
         list.add("bc");
@@ -46,5 +57,9 @@ public class TestStream {
 
         //生成一个等差数列
         Stream.iterate(0,n->n+3).limit(5).forEach(System.out::println);
+
+        //合并两个list集合
+        List<String> unionResult = Stream.of(list,list2).flatMap(Collection::stream).collect(Collectors.toList());
+        unionResult.forEach(System.out::println);
     }
 }
